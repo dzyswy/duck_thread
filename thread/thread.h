@@ -20,7 +20,7 @@ public:
 
     void start() {
         thread_ = std::thread(Thread::thread_handle, this); 
-        thread_.detach();
+        //thread_.detach();
     }
 
     void join() {
