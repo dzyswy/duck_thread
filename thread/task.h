@@ -1,5 +1,5 @@
 #pragma once
-
+#include <chrono>
 #include <memory>
 #include <glog/logging.h>
 
@@ -26,10 +26,13 @@ class Task
 {
 public:
     Task(enum ENUM_TASK_TYPE type = NORMAL_TASK) : type_(type) {}
-    Task(std::shared_ptr<TaskData> data, enum ENUM_TASK_TYPE type = NORMAL_TASK) : data_(data), type_(type) {}
 
     enum ENUM_TASK_TYPE type() {
         return type_;
+    }
+
+    void set_data(std::shared_ptr<TaskData> data) {
+        data_ = data;
     }
 
     virtual void process() {}
@@ -37,6 +40,14 @@ public:
 protected:
     std::shared_ptr<TaskData> data_;
     enum ENUM_TASK_TYPE type_;
+};
+
+
+
+class QuitTask : public Task
+{
+public:
+    QuitTask() : Task(QUIT_TASK) {}
 };
 
 

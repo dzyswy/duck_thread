@@ -18,7 +18,8 @@ add_executable(safe_queue_test ${SOURCES} safe_queue_test.cpp)
 target_link_libraries (safe_queue_test glog::glog)
 
 
-
+add_executable(thread_pool_test ${SOURCES} thread_pool_test.cpp)
+target_link_libraries (thread_pool_test glog::glog)
 
 
 

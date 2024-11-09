@@ -5,6 +5,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <list>
+#include <vector>
 #include <memory>
 #include <glog/logging.h>
 
@@ -81,6 +82,7 @@ protected:
     std::condition_variable full_cond_;
     std::condition_variable empty_cond_;
 };
+
 
 }//namespace thread
 }//namespace duck

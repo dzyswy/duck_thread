@@ -14,13 +14,14 @@ namespace thread {
 
 class WorkThreadPool;
 
+//, public std::enable_shared_from_this<WorkThread>
 class WorkThread : public Thread, public std::enable_shared_from_this<WorkThread>
 {
-public:
+public: 
     WorkThread(WorkThreadPool* thread_pool) : thread_pool_(thread_pool) {}
 
-
-    void assign(std::shared_ptr<Task> task) {
+    void assign(std::shared_ptr<Task> task)  
+    {
         std::unique_lock<std::mutex> lock(mutex_);
         task_ = task;
         cond_.notify_one();
@@ -29,11 +30,11 @@ public:
     void process();
 
     std::shared_ptr<WorkThread> get_shared_ptr() {
-        return shared_from_this();
+       return shared_from_this();
     }
 
 
-protected: 
+protected:  
     WorkThreadPool* thread_pool_;
     std::shared_ptr<Task> task_;
     std::mutex mutex_;

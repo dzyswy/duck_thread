@@ -21,9 +21,7 @@ public:
 class SubTask : public Task
 {
 public:
-    SubTask(std::shared_ptr<SubTaskData> data) : Task(data) {
 
-    }
 
     void process() {
         // std::shared_ptr<SubTaskData> data = std::dynamic_pointer_cast<SubTaskData>data_;

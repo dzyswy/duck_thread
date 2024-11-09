@@ -21,14 +21,14 @@ public:
 class AddTask : public Task
 {
 public:
-    AddTask(std::shared_ptr<AddTaskData> data) : Task(data) {
 
-    }
 
     void process() {
         // std::shared_ptr<AddTaskData> data = std::dynamic_pointer_cast<AddTaskData>data_;
         // data->sum_ = data->adda_ + data->addb_;
         // LOG(INFO) << "adda: " << data->adda_ << " + addb: " << data->addb_ << " = sum_: " << data->sum_;
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+        LOG(INFO) << "AddTask";
     }
 };
 

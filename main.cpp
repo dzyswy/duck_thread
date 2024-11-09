@@ -37,12 +37,12 @@ int main(int argc, char* argv[])
 
 void test()
 {
-    WorkThreadPool pool(4); 
+    // WorkThreadPool pool(4); 
 
-    std::shared_ptr<WorkThread> thread = pool.pop();
-    std::cout << "thread: ptr=" << (void*)&thread << ", use_count=" << thread.use_count() << std::endl;
-    std::shared_ptr<WorkThread> thd = thread->get_shared_ptr();
-    std::cout << "thd: ptr=" << (void*)&thd << ", use_count=" << thd.use_count() << std::endl;
+    // std::shared_ptr<WorkThread> thread = pool.pop();
+    // std::cout << "thread: ptr=" << (void*)&thread << ", use_count=" << thread.use_count() << std::endl;
+    // std::shared_ptr<WorkThread> thd = thread->get_shared_ptr();
+    // std::cout << "thd: ptr=" << (void*)&thd << ", use_count=" << thd.use_count() << std::endl;
 }
 
 
