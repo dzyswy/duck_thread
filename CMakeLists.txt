@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.8)
 project(duck_thread)
 
 
@@ -14,7 +14,8 @@ file(GLOB_RECURSE SOURCES "task/*.cpp" "thread/*.cpp")
 add_executable(main ${SOURCES} main.cpp)
 target_link_libraries (main glog::glog)
 
-
+add_executable(safe_queue_test ${SOURCES} safe_queue_test.cpp)
+target_link_libraries (safe_queue_test glog::glog)
 
 
 
