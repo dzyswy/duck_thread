@@ -18,15 +18,18 @@ public:
     int sum_;
 };
 
-class SubTask : public Task
+class SubTask : public WorkTask
 {
 public:
+    SubTask(std::shared_ptr<TaskData> data) : WorkTask(data) {
 
+    }
 
     void process() {
-        // std::shared_ptr<SubTaskData> data = std::dynamic_pointer_cast<SubTaskData>data_;
-        // data->sum_ = data->adda_ - data->addb_;
-        // LOG(INFO) << "adda: " << data->adda_ << " - addb: " << data->addb_ << " = sum_: " << data->sum_ << std::endl;
+        std::shared_ptr<SubTaskData> data = std::static_pointer_cast<SubTaskData>(data_);
+        data->sum_ = data->adda_ - data->addb_;
+        LOG(INFO) << "SubTask adda: " << data->adda_ << " - addb: " << data->addb_ << " = sum_: " << data->sum_ << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 };
 

@@ -10,14 +10,15 @@ namespace thread {
 
 enum ENUM_TASK_TYPE
 {
-    NORMAL_TASK = 0,
+    WORK_TASK = 0,
     QUIT_TASK,
 };
 
 
 class TaskData
 { 
-
+public:
+    std::string name_;
 };
 
 
@@ -25,7 +26,7 @@ class TaskData
 class Task
 {
 public:
-    Task(enum ENUM_TASK_TYPE type = NORMAL_TASK) : type_(type) {}
+    Task(enum ENUM_TASK_TYPE type = WORK_TASK) : type_(type) {}
 
     enum ENUM_TASK_TYPE type() {
         return type_;
@@ -43,6 +44,14 @@ protected:
 };
 
 
+
+class WorkTask : public Task
+{
+public:
+    WorkTask(std::shared_ptr<TaskData> data) : Task(WORK_TASK) {
+        set_data(data);
+    }
+};
 
 class QuitTask : public Task
 {
