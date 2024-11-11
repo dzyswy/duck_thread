@@ -3,8 +3,10 @@
 #include "thread/task.h"
  
 
+using namespace duck::thread;
+
 namespace duck {
-namespace thread {
+namespace task {
 
 
 class SubTaskData : public TaskData
@@ -34,6 +36,6 @@ public:
 };
 
 
-}//namespace thread
+}//namespace task
 }//namespace duck
 
