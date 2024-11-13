@@ -30,10 +30,7 @@ public:
             if (task->type() == QUIT_TASK) {
                 for (size_t i = 0; i < thread_num(); i++) { 
                     thread_vec_[i]->assign(quit_task_);
-                }
-                for (size_t i = 0; i < thread_num(); i++) { 
-                    thread_vec_[i]->join();
-                }
+                } 
                 break;
             } else {
                 std::shared_ptr<WorkThread> thread = thread_pool_.pop();
@@ -54,6 +51,9 @@ public:
 
     void stop() {
         push_task(quit_task_);
+        for (size_t i = 0; i < thread_num(); i++) { 
+            thread_vec_[i]->join();
+        }
         Thread::join();
     }
 
